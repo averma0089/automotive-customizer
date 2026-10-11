@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DriveSelect | Configure Your Car</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="brand">DriveSelect</div>
+        <nav class="nav-links">
+          <a href="/">Home</a>
+          <a href="/latest-leads">Latest Leads</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="badge">New launch • 2026 edition</div>
+        <h1>Build your dream vehicle.</h1>
+        <p>
+          Personalize a premium new model for your family, business, or next weekend adventure.
+          Choose performance, comfort, and style from our launch lineup.
+        </p>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80" alt="Luxury car front view" />
+      </div>
+    </section>
+
+    <main class="page">
+      <form class="configurator" action="/buy" method="POST">
+        <h2 class="section-title">1. Choose your model</h2>
+
+        <div class="model-grid">
+          <% models.forEach((model) => { %>
+            <div class="model-card">
+              <img src="<%= model.image %>" alt="<%= model.name %>" />
+              <div class="card-body">
+                <h3><%= model.name %></h3>
+                <p><%= model.tagline %></p>
+                <label>
+                  <input type="radio" name="carModel" value="<%= model.name %>" <%= model.name === 'Apex S' ? 'checked' : '' %> />
+                  Select model
+                </label>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <h2 class="section-title">2. Personalize the build</h2>
+        <div class="field-grid">
+          <div class="field">
+            <label for="trim">Trim</label>
+            <select id="trim" name="trim">
+              <option>Standard</option>
+              <option selected>Premium</option>
+              <option>Performance</option>
+              <option>Executive</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="color">Paint color</label>
+            <select id="color" name="color">
+              <option selected>Obsidian Black</option>
+              <option>Arctic Silver</option>
+              <option>Electric Blue</option>
+              <option>Deep Red</option>
+              <option>Forest Green</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="wheel">Wheel package</label>
+            <select id="wheel" name="wheel">
+              <option selected>20-inch alloy</option>
+              <option>21-inch sport alloy</option>
+              <option>18-inch urban wheel</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="interior">Interior</label>
+            <select id="interior" name="interior">
+              <option selected>Leather</option>
+              <option>Premium textile</option>
+              <option>Ventilated sport seats</option>
+              <option>Executive lounge</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="packageName">Add-on package</label>
+            <select id="packageName" name="packageName">
+              <option selected>Tech Plus</option>
+              <option>Driver Assist Pro</option>
+              <option>Adventure Pack</option>
+              <option>Luxury Comfort</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="preferredTime">Preferred contact time</label>
+            <input id="preferredTime" name="preferredTime" type="text" placeholder="e.g. 2:00 PM - 4:00 PM" required />
+          </div>
+
+          <div class="field full-width">
+            <label for="notes">Special notes</label>
+            <textarea id="notes" name="notes" placeholder="Tell us about your preferences, financing interest, delivery city, or any custom add-ons."></textarea>
+          </div>
+        </div>
+
+        <h2 class="section-title">3. Contact details</h2>
+        <div class="field-grid">
+          <div class="field">
+            <label for="customerName">Full name</label>
+            <input id="customerName" name="customerName" type="text" placeholder="John Smith" required />
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567" required />
+          </div>
+
+          <div class="field full-width">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="john@example.com" required />
+          </div>
+        </div>
+
+        <button class="buy-btn" type="submit">Buy Now</button>
+      </form>
+    </main>
+  </body>
+</html>

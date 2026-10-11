@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latest Leads | DriveSelect</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="brand">DriveSelect</div>
+        <nav class="nav-links">
+          <a href="/">Home</a>
+          <a href="/latest-leads">Latest Leads</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="status-box">Latest customer leads</div>
+
+      <% if (!leads || leads.length === 0) { %>
+        <div class="success-card" style="margin-top: 2rem;">
+          <h1>No leads yet</h1>
+          <p>Customer interest will appear here once they submit a purchase request.</p>
+        </div>
+      <% } else { %>
+        <div class="leads-table-wrap" style="margin-top: 2rem;">
+          <table class="leads-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Model</th>
+                <th>Package</th>
+                <th>Preferred time</th>
+                <th>Created</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% leads.forEach((lead) => { %>
+                <tr>
+                  <td><%= lead.id %></td>
+                  <td><%= lead.customer_name %></td>
+                  <td><%= lead.phone %></td>
+                  <td><%= lead.email %></td>
+                  <td><%= lead.car_model %> (<%= lead.trim %>)</td>
+                  <td><%= lead.package_name %></td>
+                  <td><%= lead.preferred_time %></td>
+                  <td><%= new Date(lead.created_at).toLocaleString() %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } %>
+    </main>
+  </body>
+</html>

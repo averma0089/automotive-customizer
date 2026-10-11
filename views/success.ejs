@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purchase Confirmation | DriveSelect</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="brand">DriveSelect</div>
+        <nav class="nav-links">
+          <a href="/">Home</a>
+          <a href="/latest-leads">Latest Leads</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="success-card">
+        <h1>Thank you for your interest.</h1>
+        <p>
+          Your purchase request has been captured successfully. A sales advisor will contact you soon.
+        </p>
+        <div class="status-box">Lead reference: #<%= leadId %></div>
+      </div>
+    </main>
+  </body>
+</html>
