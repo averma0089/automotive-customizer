@@ -1,0 +1,26 @@
+<%- include('layout', { title: title, body: `
+<section class="checkout-hero">
+  <h2>Checkout</h2>
+</section>
+
+<section class="checkout-grid">
+  <div>
+    <h3>Order Summary</h3>
+    ${cart.length === 0 ? '<p>Your cart is empty.</p>' : `
+    <ul class="cart-list">
+      ${cart.map(i => `<li>${i.qty} × ${i.name} — $${(i.price * i.qty).toLocaleString()}</li>`).join('')}
+    </ul>
+    <p class="total">Total: $${total.toLocaleString()}</p>
+    `}
+  </div>
+  <div>
+    <h3>Shipping & Payment</h3>
+    <form method="POST" action="/checkout">
+      <label>Full name<input name="name" required /></label>
+      <label>Email<input name="email" type="email" required /></label>
+      <label>Shipping address<textarea name="address" required></textarea></label>
+      <button class="btn">Place order</button>
+    </form>
+  </div>
+</section>
+` }) %>

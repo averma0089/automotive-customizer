@@ -1,0 +1,32 @@
+/* Simple modern styles */
+:root{
+  --bg:#f8f9fa; --card:#fff; --accent:#0d6efd; --muted:#6c757d; --radius:12px;
+  --container:1100px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:var(--bg);color:#111}
+.container{max-width:var(--container);margin:0 auto;padding:1rem}
+.site-header{background:#fff;box-shadow:0 1px 4px rgba(16,24,40,0.06)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem}
+.brand a{color:var(--accent);text-decoration:none;font-weight:700;font-size:1.25rem}
+nav a{margin-left:1rem;color:#333;text-decoration:none}
+.hero{background:linear-gradient(90deg, #eef2ff, #fff);padding:4rem 0;border-bottom:1px solid #e9ecef}
+.hero-inner{max-width:700px}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:0.6rem 1rem;border-radius:8px;text-decoration:none;border:none}
+.features{padding:2rem 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.card{background:var(--card);padding:1rem;border-radius:var(--radius);box-shadow:0 6px 18px rgba(16,24,40,0.04)}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;padding:1rem 0}
+.product-card{background:var(--card);padding:1rem;border-radius:12px;text-align:center}
+.product-card img{width:100%;height:160px;object-fit:cover;border-radius:8px;background:#e9ecef}
+.price{font-weight:700;margin:0.5rem 0}
+.cart-preview{margin-top:1.5rem;background:#fff;padding:1rem;border-radius:12px}
+.cart-list{list-style:none;padding:0;margin:0}
+.cart-list li{padding:0.5rem 0;border-bottom:1px solid #f1f3f5;display:flex;justify-content:space-between;align-items:center}
+.inline{display:inline;margin:0;padding:0}
+.link-btn{background:none;border:none;color:var(--accent);text-decoration:underline;cursor:pointer}
+.checkout-grid{display:grid;grid-template-columns:1fr 320px;gap:1rem}
+.checkout-grid label{display:block;margin-bottom:0.5rem}
+.checkout-grid input, .checkout-grid textarea{width:100%;padding:0.5rem;margin-bottom:0.75rem;border:1px solid #e9ecef;border-radius:8px}
+.site-footer{padding:1.5rem 0;color:var(--muted);text-align:center}
+@media(max-width:760px){.checkout-grid{grid-template-columns:1fr}.header-inner{flex-direction:column;gap:0.5rem}}

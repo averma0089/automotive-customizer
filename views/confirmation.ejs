@@ -1,0 +1,12 @@
+<%- include('layout', { title: title, body: `
+<section class="confirmation">
+  <h2>Thank you, ${order.name}!</h2>
+  <p>Your order has been received. A confirmation was sent to ${order.email}.</p>
+  <h3>Order details</h3>
+  <ul class="cart-list">
+    ${order.cart.map(i => `<li>${i.qty} × ${i.name} — $${(i.price * i.qty).toLocaleString()}</li>`).join('')}
+  </ul>
+  <p class="total">Order total: $${order.total.toLocaleString()}</p>
+  <p><a class="btn" href="/">Return to home</a></p>
+</section>
+` }) %>

@@ -1,32 +1,30 @@
-# Automotive Configurator
+# AutoMarket — simple car sales website
 
-A simple web application for an automotive company that lets a customer build and personalize a new car, submit a purchase inquiry, and stores the lead in a local SQLite database.
+This commit adds a small Express + EJS website with a Homepage, Shop, and Checkout pages, plus a Dockerfile so the app can be deployed as a container (suitable for AWS Elastic Beanstalk Docker platform).
 
-## Features
-- Interactive car model selection
-- Customization options for trim, paint, wheel package, interior, and add-ons
-- Customer lead form with name, phone number, email, and preferred callback time
-- Lead data saved to a SQLite database
-- Dedicated `Latest Leads` page to display buyer information to the sales team
-- Responsive landing page with automotive imagery
+How to run locally:
 
-## Setup
+1. Install dependencies
 
-```bash
-npm install
-npm start
-```
+   npm install
 
-Then open:
+2. Start the app
 
-```text
-http://localhost:3000
-```
+   npm start
 
-## Pages
-- `/` — car customizer and lead form
-- `/latest-leads` — sales team view of the latest leads
-- `/success` — confirmation page after submission
+3. Open http://localhost:8080
 
-## Notes
-The app stores any submitted lead in `data/leads.db`.
+Docker (build & run):
+
+   docker build -t automarket .
+   docker run -p 8080:8080 automarket
+
+Deploy to Elastic Beanstalk (high-level):
+
+1. Install and configure the EB CLI (https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html)
+2. eb init -p docker
+3. eb create automarket-env
+4. eb deploy
+
+Notes:
+- This is a demo app: no database, and payment handling is mocked. For production, add persistent storage, proper secrets management, and a payment provider.

@@ -1,0 +1,31 @@
+<%- include('layout', { title: title, body: `
+<section class="shop-hero">
+  <h2>Available Cars</h2>
+  <p>Choose a model to add to your cart.</p>
+</section>
+
+<section class="product-grid">
+  ${products.map(p => `
+  <article class="product-card">
+    <img src="${p.img}" alt="${p.name}" />
+    <h3>${p.name}</h3>
+    <p class="muted">${p.desc}</p>
+    <p class="price">$${p.price.toLocaleString()}</p>
+    <form method="POST" action="/cart/add">
+      <input type="hidden" name="id" value="${p.id}" />
+      <button class="btn">Add to cart</button>
+    </form>
+  </article>
+  `).join('')}
+</section>
+
+<section class="cart-preview">
+  <h3>Your Cart</h3>
+  ${cart.length === 0 ? '<p>Your cart is empty.</p>' : `
+  <ul class="cart-list">
+    ${cart.map(i => `<li>${i.qty} × ${i.name} — $${(i.price * i.qty).toLocaleString()} <form class="inline" method="POST" action="/cart/remove"><input type="hidden" name="id" value="${i.id}" /><button class="link-btn">Remove</button></form></li>`).join('')}
+  </ul>
+  <p><a class="btn" href="/checkout">Proceed to checkout</a></p>
+  `}
+</section>
+` }) %>
